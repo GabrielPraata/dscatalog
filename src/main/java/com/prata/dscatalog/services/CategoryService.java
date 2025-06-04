@@ -1,12 +1,17 @@
 package com.prata.dscatalog.services;
 
+import com.prata.dscatalog.dto.CategoryDTO;
 import com.prata.dscatalog.entities.Category;
 import com.prata.dscatalog.repositories.CategoryRepository;
+import com.prata.dscatalog.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -15,7 +20,15 @@ public class CategoryService {
     private CategoryRepository repository;
 
     @Transactional(readOnly = true)
-    public List<Category> findAll() {
-        return repository.findAll();
+    public Page<CategoryDTO> findAllPaged(Pageable pageable) {
+        Page<Category> list = repository.findAll(pageable);
+        return list.map(x -> new CategoryDTO(x));
+    }
+
+    @Transactional(readOnly = true)
+    public CategoryDTO findById(Long id) {
+        Optional<Category> obj = repository.findById(id);
+        Category entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
+        return new CategoryDTO(entity);
     }
 }
