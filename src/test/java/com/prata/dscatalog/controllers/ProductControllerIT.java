@@ -2,18 +2,12 @@ package com.prata.dscatalog.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.prata.dscatalog.dto.ProductDTO;
-import com.prata.dscatalog.repositories.ProductRepository;
-import com.prata.dscatalog.services.ProductService;
-import com.prata.dscatalog.services.exceptions.ResourceNotFoundException;
 import com.prata.dscatalog.tests.Factory;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
