@@ -1,5 +1,8 @@
 package com.prata.dscatalog.dto;
 
+import com.prata.dscatalog.services.validation.UserUpdateValid;
 
-public class UserUpdateDTO {
+@UserUpdateValid
+public class UserUpdateDTO extends UserDTO{
+
 }

@@ -2,6 +2,7 @@ package com.prata.dscatalog.controllers;
 
 import com.prata.dscatalog.dto.UserDTO;
 import com.prata.dscatalog.dto.UserInsertDTO;
+import com.prata.dscatalog.dto.UserUpdateDTO;
 import com.prata.dscatalog.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ public class UserController {
 
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<UserDTO> update(@PathVariable Long id, @Valid @RequestBody UserDTO dto) {
+    public ResponseEntity<UserDTO> update(@PathVariable Long id, @Valid @RequestBody UserUpdateDTO dto) {
         UserDTO newDto = service.update(id, dto);
         return ResponseEntity.ok().body(newDto);
     }
