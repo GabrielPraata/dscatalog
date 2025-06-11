@@ -3,6 +3,7 @@ package com.prata.dscatalog.services;
 import com.prata.dscatalog.dto.RoleDTO;
 import com.prata.dscatalog.dto.UserDTO;
 import com.prata.dscatalog.dto.UserInsertDTO;
+import com.prata.dscatalog.dto.UserUpdateDTO;
 import com.prata.dscatalog.entities.Role;
 import com.prata.dscatalog.entities.User;
 import com.prata.dscatalog.repositories.RoleRepository;
@@ -56,7 +57,7 @@ public class UserService {
     }
 
     @Transactional
-    public UserDTO update(Long id, UserDTO dto) {
+    public UserDTO update(Long id, UserUpdateDTO dto) {
         try {
             User entity = repository.getReferenceById(id);
             copyDtoToEntity(dto, entity);
